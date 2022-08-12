@@ -99,18 +99,18 @@ async function main() {
 
   // Create two accounts, Alice and Bob, and fund Alice but not Bob
   const alice = new AptosAccount();
-  const bob = new AptosAccount();
+  // const bob = new AptosAccount();
 
   console.log("\n=== Addresses ===");
   console.log(`Alice: ${alice.address()}`);
-  console.log(`Bob: ${bob.address()}`);
+  // console.log(`Bob: ${bob.address()}`);
 
   await faucetClient.fundAccount(alice.address(), 5_000);
-  await faucetClient.fundAccount(bob.address(), 5_000);
+  // await faucetClient.fundAccount(bob.address(), 5_000);
 
   console.log("\n=== Initial Balances ===");
   console.log(`Alice: ${await accountBalance(alice.address())}`);
-  console.log(`Bob: ${await accountBalance(bob.address())}`);
+  // console.log(`Bob: ${await accountBalance(bob.address())}`);
 
   await new Promise<void>((resolve) => {
     readline.question(
@@ -137,12 +137,12 @@ async function main() {
   await client.waitForTransaction(txHash);
   console.log(`New value: ${await getMessage(alice.address(), alice.address())}`);
 
-  console.log("\n=== Testing Bob ===");
-  console.log(`Initial value: ${await getMessage(alice.address(), bob.address())}`);
-  console.log('Setting the message to "Hello, Blockchain"');
-  txHash = await setMessage(alice.address(), bob, "Hello, Blockchain");
-  await client.waitForTransaction(txHash);
-  console.log(`New value: ${await getMessage(alice.address(), bob.address())}`);
+  // console.log("\n=== Testing Bob ===");
+  // console.log(`Initial value: ${await getMessage(alice.address(), bob.address())}`);
+  // console.log('Setting the message to "Hello, Blockchain"');
+  // txHash = await setMessage(alice.address(), bob, "Hello, Blockchain");
+  // await client.waitForTransaction(txHash);
+  // console.log(`New value: ${await getMessage(alice.address(), bob.address())}`);
 }
 
 if (require.main === module) {
